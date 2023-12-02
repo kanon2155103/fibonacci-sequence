@@ -12,59 +12,66 @@ const option = (option: string, number: number) => {
 }
 
 const fibSequence = (n: number): number => {
-	const memo = new Map<number, number>();
-	memo.set(0, 0);
-	memo.set(1, 1);
-	const fib = (n: number): number => {
-		if (memo.has(n)) {
-			return memo.get(n);
-
+	const num = new Map<number, number>();
+	num.set(0, 0);
+	num.set(1, 1);
+	const fibonacci = (n: number): number => {
+		if (num.has(n)) {
+			const value =  num.get(n);
+			if (value === undefined) {
+				throw new Error('num is undefined')
+			}
+			return value;
 		}
-		const value = fib(n - 1) + fib(n -2);
-		memo.set(n, value);
-		return value;
+		const fib = fibonacci(n - 1) + fibonacci(n -2);
+		num.set(n, fib);
+		return fib;
 	}
 	for (let i = 0; i <= n; i++) {
-		console.log(fib(i));
+		console.log(fibonacci(i));
 	}
 	return NaN;
 }
 
 const tribSequence = (n: number): number => {
-	const memo = new Map<number, number>();
-	memo.set(0, 0);
-	memo.set(1, 0);
-	memo.set(2, 1);
-	const trib = (n: number): number => {
-		if (memo.has(n)) {
-			 memo.get(n);
+	const num = new Map<number, number>();
+	num.set(0, 0);
+	num.set(1, 0);
+	num.set(2, 1);
+	const tribonacci = (n: number): number => {
+		if (num.has(n)) {
+			const value = num.get(n);
+			if (value === undefined) {
+				throw new Error ('num is underined');
+			}
+			return value;
 		}
-		const value = trib(n - 1) + trib(n - 2) + trib(n - 3);
-		memo.set(n, value)
-		return value;
+		const trib = tribonacci(n - 1) + tribonacci(n - 2) + tribonacci(n - 3);
+		num.set(n, trib);
+		return trib;
 	}
 	for (let i = 0; i <= n; i++) {
-		console.log(trib(i));
+		console.log(tribonacci(i));
 		}
 	return NaN;
 
 }
 const tetraSequence = (n: number): number => {
-	const memo = new Map<number, number>();
-	memo.set(0, 0);
-	memo.set(1, 0);
-	memo.set(2, 0);
-	memo.set(3, 1);
-	const tetra = (n: number): number => {
-		if (memo.has(n)) {
-			 memo.get(n);
+	const num = new Map<number, number>();
+	num.set(0, 0);
+	num.set(1, 0);
+	num.set(2, 0);
+	num.set(3, 1);
+	const tetranacci = (n: number): number => {
+		if (num.has(n)) {
+			return num.get(n)!;
 		}
-		const value = tetra(n - 1) + tetra(n - 2) + tetra(n - 3) + tetra(n - 4);
-		memo.set(n, value)
-		return value;
+		const tetra = tetranacci(n - 1) + tetranacci(n - 2) + tetranacci(n - 3) + tetranacci(n - 4);
+		num.set(n, tetra);
+		return tetra;
 	}
 	for (let i = 0; i <= n; i++) {
-		console.log(tetra(i));
+		console.log(tetranacci(i));
 	}
 	return NaN;
 }

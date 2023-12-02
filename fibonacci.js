@@ -14,57 +14,65 @@ var option = function (option, number) {
     }
 };
 var fibSequence = function (n) {
-    var memo = new Map();
-    memo.set(0, 0);
-    memo.set(1, 1);
-    var fib = function (n) {
-        if (memo.has(n)) {
-            return memo.get(n);
+    var num = new Map();
+    num.set(0, 0);
+    num.set(1, 1);
+    var fibonacci = function (n) {
+        if (num.has(n)) {
+            var value = num.get(n);
+            if (value === undefined) {
+                throw new Error('num is undefined');
+            }
+            return value;
         }
-        var value = fib(n - 1) + fib(n - 2);
-        memo.set(n, value);
-        return value;
+        var fib = fibonacci(n - 1) + fibonacci(n - 2);
+        num.set(n, fib);
+        return fib;
     };
     for (var i = 0; i <= n; i++) {
-        console.log(fib(i));
+        console.log(fibonacci(i));
     }
     return NaN;
 };
 var tribSequence = function (n) {
-    var memo = new Map();
-    memo.set(0, 0);
-    memo.set(1, 0);
-    memo.set(2, 1);
-    var trib = function (n) {
-        if (memo.has(n)) {
-            return memo.get(n);
+    var num = new Map();
+    num.set(0, 0);
+    num.set(1, 0);
+    num.set(2, 1);
+    var tribonacci = function (n) {
+        if (num.has(n)) {
+            var value = num.get(n);
+            if (value === undefined) {
+                throw new Error('num is underined');
+            }
+            return value;
         }
-        var value = trib(n - 1) + trib(n - 2) + trib(n - 3);
-        memo.set(n, value);
-        return value;
+        var trib = tribonacci(n - 1) + tribonacci(n - 2) + tribonacci(n - 3);
+        num.set(n, trib);
+        return trib;
     };
     for (var i = 0; i <= n; i++) {
-        console.log(trib(i));
+        console.log(tribonacci(i));
     }
     return NaN;
 };
 var tetraSequence = function (n) {
-    var memo = new Map();
-    memo.set(0, 0);
-    memo.set(1, 0);
-    memo.set(2, 0);
-    memo.set(3, 1);
-    var tetra = function (n) {
-        if (memo.has(n)) {
-            return memo.get(n);
+    var num = new Map();
+    num.set(0, 0);
+    num.set(1, 0);
+    num.set(2, 0);
+    num.set(3, 1);
+    var tetranacci = function (n) {
+        if (num.has(n)) {
+            return num.get(n);
         }
-        var value = tetra(n - 1) + tetra(n - 2) + tetra(n - 3) + tetra(n - 4);
-        memo.set(n, value);
-        return value;
+        var tetra = tetranacci(n - 1) + tetranacci(n - 2) + tetranacci(n - 3) + tetranacci(n - 4);
+        num.set(n, tetra);
+        return tetra;
     };
     for (var i = 0; i <= n; i++) {
-        console.log(tetra(i));
+        console.log(tetranacci(i));
     }
     return NaN;
 };
-option('fib', 86);
+option('trib', 19);
